@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="my-5">Форма</h1>
+    <div class="container d-flex">
+        <form method="post">
+            <label class="form-label w-100">Имя: <input type="text" name="name" class="form-control"></label><br>
+            <label class="form-label w-100">Email: <input type="email" name="email" class="form-control"></label><br>
+
+
+            <label class="form-label">Телефон: 
+                <input type="text" name="phone" class="form-control {% if error %}is-invalid{% endif %}" required>
+                {% if error %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endif %}
+            </label><br>
+
+            
+            <button type="submit" class="btn btn-primary w-100">Отправить</button>
+        </form>
+    </div>
+
+    <h1 class="my-5">Параметры формы</h1>
+    <ul class="list-group">
+        {% for key, value in request.form.items() %}
+            <li class="list-group-item"><b>{{ key }}:</b> {{ value }}</li>
+        {% endfor %}
+        {% if f_phone %}
+        <li class="list-group-item"><b>Телефон после валидации</b> {{ f_phone }}</li>
+        {% endif %}
+    </ul>
+{% endblock %}
