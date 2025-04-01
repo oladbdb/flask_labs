@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1 class="my-5">Секретная страница</h1>
-    <p>Эта страница доступна только для аутентифицированных пользователей.</p>
-
-    <img src="{{ url_for('static', filename='images/secret.jpg') }}" alt="Секретное изображение" width="500">
-{% endblock %}
